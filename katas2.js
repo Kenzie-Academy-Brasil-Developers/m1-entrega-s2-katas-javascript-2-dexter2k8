@@ -1,8 +1,14 @@
 // comece a criar a sua função add na linha abaixo
 function add(a, b) {
     let soma = a
-    for (let i = 0; i < b; i++) {
-        soma++
+    if (b > 0) {
+        for (let i = 0; i < b; i++) {
+            soma++
+        }
+    } else {
+        for (let i = 0; i > b; i--) {
+            soma--
+        }
     }
     return soma
 }
@@ -14,8 +20,14 @@ console.assert(add(3, 5) === 8, 'A função add não está funcionando como espe
 // comece a criar a sua função multiply na linha abaixo
 function multiply(a, b) {
     let multiplica = 0
-    for (let i = 0; i < b; i++) {
-        multiplica = add(multiplica, a)
+    if (b > 0) {
+        for (let i = 0; i < b; i++) {
+            multiplica = add(multiplica, a)
+        }
+    } else {
+        for (let i = 0; i > b; i--) {
+            multiplica = add(multiplica, -a)
+        }
     }
     return multiplica
 }
@@ -41,7 +53,7 @@ console.assert(power(3, 4) === 81, 'A função power não está funcionando como
 
 // comece a criar a sua função factorial na linha abaixo
 function factorial(factor) {
-    let i = factor - 1
+    let i = add(factor, -1)
     let result = factor
     while (i > 0) {
         result = multiply(result, i)
@@ -60,10 +72,10 @@ console.assert(factorial(5) === 120, 'A função factorial não está funcionand
 
 // crie a função fibonacci
 function fibonacci(n) {
-    let i = -2
+    let i = 2
     let fibo = [0, 1]
     while (i <= n) {
-        fibo.push(fibo[add(i, 2)] + fibo[add(i, 3)])
+        fibo.push(fibo[add(i, -2)] + fibo[add(i, -1)])
         i++
     }
     return fibo[n]
